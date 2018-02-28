@@ -1,0 +1,17 @@
+{
+  "name": "chrome-pdf",
+  "version": "1.0.0",
+  "description": "Package to build Windows executable to export HTML from URL to PDF",
+  "license": "MIT",
+  "main": "chrome-pdf.js",
+  "devDependencies": {
+    "pkg": "^4.3.0",
+    "puppeteer": "^1.1.0",
+    "rimraf": "^2.6.2",
+    "yargs": "^11.0.0"
+  },
+  "scripts": {
+    "build": "pkg chrome-pdf.js --targets node8-win-x64",
+    "clean": "rimraf chrome-pdf.exe && rimraf *.pdf"
+  }
+}
