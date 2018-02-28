@@ -2,7 +2,10 @@ const puppeteer = require('puppeteer');
 const args = require('yargs')
   .default('debug', false)
   .default('executable', 'C:\\Program Files (x86)\\Google\\Chrome\\Application\\chrome.exe')
-  .default('margin', { bottom: '1in', left: '1in', right: '1in', top: '1in' })
+  //.default('pdf', { displayHeaderFooter: false, margin: { bottom: '1in', left: '1in', right: '1in', top: '1in' }, path: 'print.pdf' })
+  .default('pdf.displayHeaderFooter', false)
+  .default('pdf.margin', { bottom: '1in', left: '1in', right: '1in', top: '1in' })
+  .default('pdf.path', 'print.pdf')
   .default('timeout', 30 * 1000)
   .default('waitUntil', 'networkidle0')
   .argv;
@@ -55,6 +58,6 @@ const args = require('yargs')
   }
   await page.setCookie(args.cookie).catch(console.error);
   await page.goto(args.url, { timeout: args.timeout, waitUntil: args.waitUntil }).catch(console.error);
-  await page.pdf({ displayHeaderFooter: false, margin: args.margin, path: args.file }).catch(console.error);
+  await page.pdf(args.pdf).catch(console.error);
   await browser.close().catch(console.error);
 })();
