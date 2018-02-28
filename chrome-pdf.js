@@ -2,14 +2,14 @@ const puppeteer = require('puppeteer');
 const args = require('yargs')
   .default('debug', false)
   .default('launch.executablePath', 'C:\\Program Files (x86)\\Google\\Chrome\\Application\\chrome.exe')
+  .default('navigation.timeout', 30 * 1000)
+  .default('navigation.waitUntil', 'networkidle0')
   .default('pdf.displayHeaderFooter', false)
   .default('pdf.margin.bottom', '1in')
   .default('pdf.margin.left', '1in')
   .default('pdf.margin.right', '1in')
   .default('pdf.margin.top', '1in')
   .default('pdf.path', 'print.pdf')
-  .default('navigation.timeout', 30 * 1000)
-  .default('navigation.waitUntil', 'networkidle0')
   .argv;
 
 (async () => {
