@@ -1,18 +1,20 @@
 const puppeteer = require('puppeteer');
 const args = require('yargs')
   .default('debug', false)
-  .default('executable', 'C:\\Program Files (x86)\\Google\\Chrome\\Application\\chrome.exe')
-  //.default('pdf', { displayHeaderFooter: false, margin: { bottom: '1in', left: '1in', right: '1in', top: '1in' }, path: 'print.pdf' })
+  .default('launch.executablePath', 'C:\\Program Files (x86)\\Google\\Chrome\\Application\\chrome.exe')
   .default('pdf.displayHeaderFooter', false)
-  .default('pdf.margin', { bottom: '1in', left: '1in', right: '1in', top: '1in' })
+  .default('pdf.margin.bottom', '1in')
+  .default('pdf.margin.left', '1in')
+  .default('pdf.margin.right', '1in')
+  .default('pdf.margin.top', '1in')
   .default('pdf.path', 'print.pdf')
-  .default('timeout', 30 * 1000)
-  .default('waitUntil', 'networkidle0')
+  .default('navigation.timeout', 30 * 1000)
+  .default('navigation.waitUntil', 'networkidle0')
   .argv;
 
 (async () => {
   console.log(args);
-  const browser = await puppeteer.launch({ executablePath: args.executable }).catch(console.error);
+  const browser = await puppeteer.launch(args.launch).catch(console.error);
   const page = await browser.newPage().catch(console.error);
   page.on('error', error => {
     console.error(error);
@@ -57,7 +59,7 @@ const args = require('yargs')
     });
   }
   await page.setCookie(args.cookie).catch(console.error);
-  await page.goto(args.url, { timeout: args.timeout, waitUntil: args.waitUntil }).catch(console.error);
+  await page.goto(args.url, args.navigation).catch(console.error);
   await page.pdf(args.pdf).catch(console.error);
   await browser.close().catch(console.error);
 })();
