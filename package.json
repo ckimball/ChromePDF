@@ -4,7 +4,7 @@
   "description": "Package to build Windows executable to export HTML from URL to PDF",
   "license": "MIT",
   "main": "chrome-pdf.js",
-  "devDependencies": {
+  "dependencies": {
     "pkg": "^4.3.0",
     "puppeteer": "^1.1.0",
     "rimraf": "^2.6.2",
