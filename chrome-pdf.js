@@ -58,7 +58,9 @@ const args = require('yargs')
       console.log(`requestfinished: ${log}`);
     });
   }
-  await page.setCookie(args.cookie).catch(console.error);
+  if (args.cookie) {
+    await page.setCookie(args.cookie).catch(console.error);
+  }
   await page.goto(args.url, args.navigation).catch(console.error);
   await page.pdf(args.pdf).catch(console.error);
   await browser.close().catch(console.error);
