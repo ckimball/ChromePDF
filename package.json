@@ -5,10 +5,10 @@
   "license": "MIT",
   "main": "chrome-pdf.js",
   "dependencies": {
-    "pkg": "^4.3.0",
-    "puppeteer": "^1.1.1",
+    "pkg": "^4.3.4",
+    "puppeteer": "^1.10.0",
     "rimraf": "^2.6.2",
-    "yargs": "^11.0.0"
+    "yargs": "^11.1.0"
   },
   "scripts": {
     "build": "pkg chrome-pdf.js --targets node8-win-x64",
