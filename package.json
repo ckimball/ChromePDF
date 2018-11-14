@@ -10,6 +10,9 @@
     "rimraf": "^2.6.2",
     "yargs": "^11.1.0"
   },
+  "devDependencies": {
+    "cryptiles": ">=4.1.2"
+  },
   "scripts": {
     "build": "pkg chrome-pdf.js --targets node8-win-x64",
     "clean": "rimraf chrome-pdf.exe && rimraf *.log && rimraf *.pdf"
