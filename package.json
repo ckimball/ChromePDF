@@ -5,7 +5,7 @@
   "license": "MIT",
   "main": "chrome-pdf.js",
   "dependencies": {
-    "pkg": ">=4.4.0",
+    "pkg": ">=5.8.1",
     "puppeteer": ">=1.18.1",
     "rimraf": ">=2.6.3",
     "yargs": ">=13.3.0"
